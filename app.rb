@@ -1,4 +1,5 @@
-DataMapper::setup(:default, "mysql://root:i181MYSQL@localhost/doit")
+DataMapper::setup(:default, 
+	ENV['DATABASE_URL'] || "mysql://root:i181MYSQL@localhost/doit")
 
 class Note
 	include DataMapper::Resource
