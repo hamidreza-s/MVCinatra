@@ -1,8 +1,4 @@
-require 'sinatra'
-require 'data_mapper'
-require 'json'
-
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/doit.db")
+DataMapper::setup(:default, "mysql://root:i181MYSQL@localhost/doit")
 
 class Note
 	include DataMapper::Resource
