@@ -1,5 +1,5 @@
 <% if @note %>
-	<form action="/<%= @note.id %>" method="post" id="edit">
+	<form action="/note/<%= @note.id %>" method="post" id="edit">
 		<input type="hidden" name="_method" value="put" />
 		<textarea name="content"><%= @note.content %></textarea>
 		<br/>
@@ -9,7 +9,7 @@
 		<br/><br/>	
 		<input type="submit" />
 		 or 
-		<a href="/<%= @note.id %>/delete">Delete</a>
+		<a href="/note/<%= @note.id %>/delete">Delete</a>
 	</form>
 <% else %>
 	<p>Note not found.</p>

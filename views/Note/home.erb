@@ -1,5 +1,5 @@
 <section id="add">
-	<form action="/" method="post">
+	<form action="/note" method="post">
 		<textarea name="content" placeholder="Your note&hellip;"></textarea>
 		<br/>
 		<input type="submit" value="Take Note!" />
@@ -10,10 +10,10 @@
 	<article <%= 'class="complete"' if note.complete %>>
 		<p>
 			<%= note.content %>
-			<span><a href="/<%= note.id %>">[edit]</a></span>
+			<span><a href="/note/<%= note.id %>">[edit]</a></span>
 		</p>
 		<p class="links">
-			<a href="/<%= note.id %>/complete">&#8623;</a>
+			<a href="/note/<%= note.id %>/complete">&#8623;</a>
 		</p>
 		<p class="meta">Created: <%= note.created_at %></p>
 	</article>
