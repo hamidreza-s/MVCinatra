@@ -10,10 +10,8 @@ end
 # datamapper init
 DataMapper::setup(:default, ENV['DATABASE_URL'] || "mysql://root:i181MYSQL@localhost/doit")
 
-# models and controllers
-Dir['./{models,controllers}/*.rb'].each do |file|
-	require file
-end
+# loader
+require './loader.rb'
 
 # datamaper finalize
 DataMapper.finalize.auto_upgrade!
