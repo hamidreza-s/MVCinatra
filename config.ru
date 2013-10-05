@@ -4,7 +4,7 @@ Bundler.require
 
 # basic auth
 use Rack::Auth::Basic do |username, password|
-	username == 'denis' && password == 'arsenal'
+  username == 'denis' && password == 'arsenal'
 end
 
 # datamapper init
@@ -17,7 +17,6 @@ require './loader.rb'
 DataMapper.finalize.auto_upgrade!
 
 # maps and run
-map('/') 			{ run Controllers::Main }
-map('/login')	{ run Controllers::Login }
-map('/note')	{ run Controllers::Note }
-map('/user')	{ run Controllers::User }
+map('/')      { run Controllers::Main }
+map('/note')  { run Controllers::Note }
+map('/user')  { run Controllers::User }

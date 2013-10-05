@@ -57,6 +57,8 @@ GEM
     do_postgres (0.10.13)
       data_objects (= 0.10.13)
     fastercsv (1.5.5)
+    haml (4.0.3)
+      tilt
     json (1.8.0)
     json_pure (1.8.0)
     multi_json (1.8.0)
@@ -79,5 +81,6 @@ DEPENDENCIES
   dm-mysql-adapter
   dm-postgres-adapter
   do_mysql
+  haml
   json
   sinatra

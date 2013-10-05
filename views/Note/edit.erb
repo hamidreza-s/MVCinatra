@@ -1,16 +1,16 @@
 <% if @note %>
-	<form action="/note/<%= @note.id %>" method="post" id="edit">
-		<input type="hidden" name="_method" value="put" />
-		<textarea name="content"><%= @note.content %></textarea>
-		<br/>
-		<input type="checkbox" name="complete" 
-			<%= "checked" if @note.complete %>
-		/> Completed?
-		<br/><br/>	
-		<input type="submit" />
-		 or 
-		<a href="/note/<%= @note.id %>/delete">Delete</a>
-	</form>
+  <form action="/note/<%= @note.id %>" method="post" id="edit">
+    <input type="hidden" name="_method" value="put" />
+    <textarea name="content"><%= @note.content %></textarea>
+    <br/>
+    <input type="checkbox" name="complete" 
+      <%= "checked" if @note.complete %>
+    /> Completed?
+    <br/><br/>	
+    <input type="submit" />
+     or 
+    <a href="/note/<%= @note.id %>/delete">Delete</a>
+  </form>
 <% else %>
-	<p>Note not found.</p>
+  <p>Note not found.</p>
 <% end %>

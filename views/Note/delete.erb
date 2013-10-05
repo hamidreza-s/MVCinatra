@@ -1,13 +1,13 @@
 <% if @note %>
-	<p>
-		Are you sure to delete this note:
-		<p><em>"<%= @note.content %>"</em></p>
-	</p>
-	<form action="/note/<%= @note.id %>" method="post">
-		<input type="hidden" name="_method" value="delete" />
-		<input type="submit" value="Yes, Delete It!" />
-		<a href="/note/<%= @note.id %>">Cancel</a>
-	</form>
+  <p>
+    Are you sure to delete this note:
+    <p><em>"<%= @note.content %>"</em></p>
+  </p>
+  <form action="/note/<%= @note.id %>" method="post">
+    <input type="hidden" name="_method" value="delete" />
+    <input type="submit" value="Yes, Delete It!" />
+    <a href="/note/<%= @note.id %>">Cancel</a>
+  </form>
 <% else %>
-	<p>Note note found.</p>
+  <p>Note note found.</p>
 <% end %>
