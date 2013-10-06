@@ -1,0 +1,14 @@
+.row
+  .col-lg-4
+  .col-lg-4.text-center
+    - if @note
+      %form{method: "POST", action: "/note/#{@note.id}"}
+        .form-group
+          %input{type: "hidden", name: "_method", value: "put"}
+          %textarea.form-control{name: "content", placeholder: "Type here..."}
+            = @note.content
+        .form-group
+          %button.btn.btn-primary{type: "submit"} Submit
+    - else
+      Note not found
+  .col-lg-4

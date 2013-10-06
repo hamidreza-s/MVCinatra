@@ -2,11 +2,6 @@
 require 'bundler'
 Bundler.require
 
-# basic auth
-use Rack::Auth::Basic do |username, password|
-  username == 'denis' && password == 'arsenal'
-end
-
 # datamapper init
 DataMapper::setup(:default, ENV['DATABASE_URL'] || "mysql://root:i181MYSQL@localhost/doit")
 

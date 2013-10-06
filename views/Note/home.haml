@@ -1,0 +1,31 @@
+.row
+  .col-lg-4
+  .col-lg-4.text-center
+    %form{method: "POST", action: "/note"}
+      .form-group
+        %textarea.form-control{name: "content", placeholder: "Type here..."}
+      .form-group
+        %button.btn.btn-primary{type: "submit"} Submit
+  .col-lg-4
+
+.row
+  .col-lg-4
+  .col-lg-4
+    - @notes.each do |note|
+      .panel{class: (note.complete ? "panel-danger" : "panel-info")}
+        .panel-heading
+        .panel-body.panel-info
+          = note.content
+        .panel-footer.text-muted
+          %small
+            %em
+              Created: #{note.created_at}
+              .pull-right
+                %a{href: "/note/#{note.id}"}
+                  %span.glyphicon.glyphicon-font
+                %a{href: "/note/#{note.id}/complete"}  
+                  %span.glyphicon.glyphicon-flash
+                %a{href: "/note/#{note.id}/delete"}
+                  %span.glyphicon.glyphicon-trash
+  .col-lg-4
+

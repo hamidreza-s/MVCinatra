@@ -1,0 +1,55 @@
+!!!
+%html
+  %head
+    %title #{@title} | Do It
+    %link{href: "/css/bootstrap.css", rel: "stylesheet"}
+    %link{href: "/css/app.css", rel: "stylesheet"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %link{href: "css/bootstrap.min.css", rel: "stylesheet", media: "screen"}
+
+    / [if lt IE 9]
+      %script{src: "../../assets/js/html5shiv.js"}
+      %script{src: "../../assets/js/respond.min.js"}
+
+
+%body
+
+  / Begin page content
+  .container
+    
+    / Begin navbar
+    %nav.navbar.navbar-default
+      .navbar-header
+        %a.navbar-brand{href: "/"}
+          = APP_NAME
+
+      .navbar-collapse.collapse
+        %ul.nav.navbar-nav
+          %li 
+            %a{href: "#"} Home
+          %li
+            %a{href: "#"} About
+
+        %ul.nav.navbar-nav.navbar-right
+          %li 
+            %a{href: "/user/signout"}
+              %span.glyphicon.glyphicon-off
+                                   
+        %form.navbar-form.navbar-right{method: "POST", action: "#"}
+          .form-group
+            %input.form-control{type: "text", name: "search", placeholder: "search"}
+          .form-group
+            %button.btn.btn-default{type: "submit"} Search
+
+    / End navbar
+
+    .page-body
+      %p= session.to_s
+      = yield
+  / End page content
+   
+   
+  / Begin page footer
+  .footer
+    .container
+  / Eng page footer

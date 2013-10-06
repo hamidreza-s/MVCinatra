@@ -4,11 +4,19 @@ module Controllers
     set_view to: self.name
 
     get '/signin' do
-    
+      @title = 'Sign In'
+      redirect '/note' if session['username']
+      haml :signin, :layout => BLANK_LAYOUT
     end
     
     post '/signin' do
-    
+      user = Model::User.first :username => params[:username], :password => params[:password]
+      if user
+        session['username'] = user.username
+        redirect '/note'
+      else
+        redirect '/user/signin'
+      end  
     end
     
     get '/signout' do
@@ -16,8 +24,7 @@ module Controllers
     end
     
     get '/signup' do
-      @title = "Signup"
-      haml :signup
+
     end
     
     post '/signup' do

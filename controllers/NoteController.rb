@@ -2,7 +2,7 @@ module Controllers
   class Note < Base
 
     set_view to: self.name
-
+    
     get '/' do
       @notes = Model::Note.all :order => :id.desc
       @title = "All Notes"
@@ -13,7 +13,7 @@ module Controllers
         uncompleted << item unless item.complete
     end
       @notes = uncompleted.concat completed
-      erb :home
+      haml :home
     end
 
     post '/' do
@@ -28,7 +28,7 @@ module Controllers
     get '/:id' do
       @note = Model::Note.get params[:id]
       @title = "Edit note ##{params[:id]}"
-      erb :edit
+      haml :edit
     end
 
     put '/:id' do
@@ -43,7 +43,7 @@ module Controllers
     get '/:id/delete' do
       @note = Model::Note.get params[:id]
       @title = "Confirm deletion of note ##{params[:id]}"
-      erb :delete
+      haml :delete
     end
 
     delete '/:id' do

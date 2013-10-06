@@ -1,0 +1,31 @@
+.row
+  .col-lg-4
+  .col-lg-4
+    .panel{class: (@note.complete ? "panel-danger" : "panel-info")}
+      .panel-heading
+      .panel-body.panel-info
+        = @note.content
+      .panel-footer.text-muted
+        %small
+          %em
+            Created: #{@note.created_at}
+            .pull-right
+              %a{href: "/note/#{@note.id}"}
+                %span.glyphicon.glyphicon-font
+              %a{href: "/note/#{@note.id}/complete"}  
+                %span.glyphicon.glyphicon-flash
+  .col-lg-4
+
+.row
+  .col-lg-4
+  .col-lg-4.text-center
+    - if @note
+      %form{method: "POST", action: "/note/#{@note.id}"}
+        .form-group
+          %input{type: "hidden", name: "_method", value: "delete"}
+        .form-group
+          %button.btn.btn-danger{type: "submit"} Delete
+          %a.btn.btn-primary{href: "/note"} Cancel
+    - else
+      Note not found
+  .col-lg-4

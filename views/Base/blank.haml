@@ -3,6 +3,7 @@
   %head
     %title #{@title} | Do It
     %link{href: "/css/bootstrap.css", rel: "stylesheet"}
+    %link{href: "/css/app.css", rel: "stylesheet"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %link{href: "css/bootstrap.min.css", rel: "stylesheet", media: "screen"}
 
@@ -15,11 +16,6 @@
 
   / Begin page content
   .container
-    .page-header
-      %h1
-        %a{href: "/"} Do It
-      %h2
-        %em I Know that you are too busy
     .page-body
       = yield
   / End page content
