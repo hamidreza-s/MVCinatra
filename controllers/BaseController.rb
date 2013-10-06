@@ -16,11 +16,12 @@ module Controllers
     set :session_secret, 'super secret'
     enable :method_override
     enable :static
-    set :public_folder, ROOT_DIR + '/public'  
+    set :public_folder, ROOT_DIR + '/public'
     
     # filters
     before do
       @default_layout = MAIN_LAYOUT
+      @title = "Page"
     end
     
     after do

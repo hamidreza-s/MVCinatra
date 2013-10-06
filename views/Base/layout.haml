@@ -31,8 +31,10 @@
             %a{href: "#"} About
 
         %ul.nav.navbar-nav.navbar-right
+          %li
+            %a{href: "#"} Hi, #{session[:un]}!
           %li 
-            %a{href: "/user/signout"}
+            %a{href: "/signout"}
               %span.glyphicon.glyphicon-off
                                    
         %form.navbar-form.navbar-right{method: "POST", action: "#"}
@@ -44,7 +46,6 @@
     / End navbar
 
     .page-body
-      %p= session.to_s
       = yield
   / End page content
    

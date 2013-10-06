@@ -2,7 +2,7 @@
   .col-lg-4
   .col-lg-4.text-center
     - unless session.has_key? :username
-      %form{method: "POST", action: "/user/signin"}
+      %form{method: "POST", action: "/signin"}
         .form-group
           %input.form-control{type: "text", name: "username", placeholder: "username"}
           %input.form-control{type: "password", name: "password", placeholder: "password"}

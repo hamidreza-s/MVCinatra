@@ -3,6 +3,10 @@ module Controllers
 
     set_view to: self.name
     
+    before do
+      redirect '/signin' unless session[:ui]
+    end
+    
     get '/' do
       @notes = Model::Note.all :order => :id.desc
       @title = "All Notes"
