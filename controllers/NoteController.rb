@@ -8,7 +8,7 @@ module Controllers
     end
     
     get '/' do
-      @notes = Model::Note.all :order => :id.desc
+      @notes = Model::Note.all :user_id => session[:ui], :order => :id.desc
       @title = "All Notes"
       completed = []
       uncompleted = []
@@ -25,6 +25,7 @@ module Controllers
       n.content = params[:content]
       n.created_at = Time.now
       n.updated_at = Time.now
+      n.user_id = session[:ui]
       n.save
       redirect '/'
     end

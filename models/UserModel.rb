@@ -8,5 +8,6 @@ module Model
     property :lastname, Text, :required => true
     property :created_at, DateTime
     property :updated_at, DateTime
+    has n, :notes
   end
 end

@@ -1,13 +1,21 @@
 .row
   .col-lg-4
   .col-lg-4.text-center
+    .alert.alert-info
+      %h5 Welcome to #{APP_NAME}
+  .col-lg-4
+
+.row
+  .col-lg-4
+  .col-lg-4.text-center
     - unless session.has_key? :username
       %form{method: "POST", action: "/signin"}
         .form-group
           %input.form-control{type: "text", name: "username", placeholder: "username"}
+        .form-group
           %input.form-control{type: "password", name: "password", placeholder: "password"}
         .form-group
-          %button.btn.btn-primary{type: "submit"} Submit
+          %button.btn.btn-primary{type: "submit"} Sign In
     - else
       - redirect '/'
   .col-lg-4
