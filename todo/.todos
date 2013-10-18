@@ -1,0 +1,7 @@
+---
+:@next:
+- apply new property of Note model in controllers
+:@frontend:
+- find proper front-end (javascript) architecture
+:@backend:
+- find proper webservice for handling SMS(es)

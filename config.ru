@@ -3,7 +3,7 @@ require 'bundler'
 Bundler.require
 
 # datamapper init
-DataMapper::setup(:default, ENV['DATABASE_URL'] || "mysql://root:i181MYSQL@localhost/doit")
+DataMapper::setup(:default, ENV['DATABASE_URL'] || "mysql://root:i181MYSQL@localhost/ireminder")
 
 # loader
 require './loader.rb'
