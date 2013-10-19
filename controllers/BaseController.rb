@@ -6,6 +6,7 @@ module Controllers
     CONTROLLER_DIR = File.dirname(__FILE__)
     ROOT_DIR = CONTROLLER_DIR + '/..'
     CURRENT_TIME = Time.now
+    NOTE_PER_PAGE = 20
     
     # layouts
     MAIN_LAYOUT = :"../Base/layout"

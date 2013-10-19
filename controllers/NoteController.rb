@@ -8,7 +8,7 @@ module Controllers
     end
     
     get '/' do
-      @notes = Model::Note.all :user_id => session[:ui], :order => :id.desc
+      @notes = Model::Note.all user_id: session[:ui], archive: 0, order: :created_at.desc
       @title = "All Notes"
       completed = []
       uncompleted = []
@@ -23,6 +23,9 @@ module Controllers
     post '/' do
       n = Model::Note.new
       n.content = params[:content]
+      n.tags = params[:tags]
+      n.must_do_at = params[:must_do_at]
+      n.frequency = params[:frequency]
       n.created_at = Time.now
       n.updated_at = Time.now
       n.user_id = session[:ui]
@@ -30,16 +33,24 @@ module Controllers
       redirect '/'
     end
 
-    get '/:id' do
+    get '/archive' do
+      @notes = Model::Note.all user_id: session[:ui], archive: 1, order: :created_at.desc 
+      @title = "Archived Notes"
+      haml :archive
+    end
+
+    get '/:id/edit' do
       @note = Model::Note.get params[:id]
       @title = "Edit note ##{params[:id]}"
       haml :edit
     end
 
-    put '/:id' do
+    put '/:id/edit' do
       n = Model::Note.get params[:id]
       n.content = params[:content]
-      n.complete = params[:complete] ? 1 : 0
+      n.tags = params[:tags]
+      n.must_do_at = params[:must_do_at]
+      n.frequency = params[:frequency]
       n.updated_at = Time.now
       n.save
       redirect '/'
@@ -54,15 +65,28 @@ module Controllers
     delete '/:id' do
       n = Model::Note.get params[:id]
       n.destroy
-      redirect '/'
+      redirect request.referrer
+    end
+
+    get '/:id/archive' do
+      n = Model::Note.get params[:id]
+      n.archive = n.archive ? 0 : 1
+      n.save
+      redirect request.referrer
     end
 
     get '/:id/complete' do
       n = Model::Note.get params[:id]
-      n.complete = n.complete ? 0 : 1
+      if n.complete
+        n.complete = 0
+        n.have_done_at = nil
+      else
+        n.complete = 1
+        n.have_done_at = Time.now
+      end
       n.updated_at = Time.now
       n.save
-      redirect '/'
+      redirect request.referrer
     end
 
   end

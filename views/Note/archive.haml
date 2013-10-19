@@ -1,28 +1,5 @@
 .row
   .col-lg-4
-  .col-lg-4.text-center
-    %form{method: "POST", action: "/note"}
-      .form-group
-        %textarea.form-control{name: "content", placeholder: "Type here ..."}
-      .form-group
-        %input.form-control{name: "tags", type: "text", 
-          placeholder: "Comma-separated tags ..."}
-      .form-group
-        %input.form-control{name: "must_do_at", type: "text", 
-          placeholder: "Must do at (for example 2013-10-19 18:15:07)"}
-      .form-group
-        %select.form-control{name: "frequency"}
-          %option{value: "once"} Once
-          %option{value: "daily"} Daily
-          %option{value: "weekly"} Weekly
-          %option{value: "monthly"} Monthly
-          %option{value: "annually"} Annually
-      .form-group
-        %button.btn.btn-primary{type: "submit"} Submit
-  .col-lg-4
-
-.row
-  .col-lg-4
   .col-lg-4
     - @notes.each do |note|
       .panel{class: (note.complete ? "panel-danger" : "panel-info")}
@@ -54,8 +31,6 @@
                   %span.glyphicon.glyphicon-font
                 %a{href: "/note/#{note.id}/complete"}
                   %span.glyphicon.glyphicon-flash
-                %a{href: "/note/#{note.id}/edit"}
-                  %span.glyphicon.glyphicon-pencil
                 %a{href: "/note/#{note.id}/delete"}
                   %span.glyphicon.glyphicon-trash
               

@@ -9,7 +9,7 @@ module Model
     property :tags, String
 		property :must_do_at, DateTime
 		property :have_done_at, DateTime
-		property :frequency, String # once, daily, weekly, annually
+		property :frequency, String # once, daily, weekly, monthly, annually
     property :created_at, DateTime
     property :updated_at, DateTime
     belongs_to :user

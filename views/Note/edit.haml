@@ -2,11 +2,25 @@
   .col-lg-4
   .col-lg-4.text-center
     - if @note
-      %form{method: "POST", action: "/note/#{@note.id}"}
+      %form{method: "POST", action: "/note/#{@note.id}/edit"}
         .form-group
           %input{type: "hidden", name: "_method", value: "put"}
           %textarea.form-control{name: "content", placeholder: "Type here..."}
             = @note.content
+        .form-group
+          %input.form-control{name: "tags", type: "text", 
+            placeholder: "Comma-separated tags ...", value: "#{@note.tags}"}
+        .form-group
+          %input.form-control{name: "must_do_at", type: "text", 
+            placeholder: "Must do at (for example 2013-10-19 18:15:07)", 
+            value: "#{@note.must_do_at.strftime("%Y-%m-%d %H:%M")}"} 
+        .form-group
+          %select.form-control{name: "frequency"}
+            %option{value: "once", selected: (@note.frequency == 'once')} Once
+            %option{value: "daily", selected: (@note.frequency == 'daily')} Daily
+            %option{value: "weekly", selected: (@note.frequency == 'weekly')} Weekly
+            %option{value: "monthly", selected: (@note.frequency == 'monthly')} Monthly
+            %option{value: "annually", selected: (@note.frequency == 'annually')} Annually
         .form-group
           %button.btn.btn-primary{type: "submit"} Submit
     - else
