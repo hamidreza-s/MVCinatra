@@ -7,9 +7,12 @@ module Controllers
       redirect '/signin' unless session[:ui]
     end
     
-    get '/' do
-      @notes = Model::Note.all user_id: session[:ui], 
-        archive: 0, order: :created_at.desc
+    get '/:page?' do |page|
+      # default page = 1
+      @notes = Model::Note.paginate page || 1,
+        user_id: session[:ui], 
+        archive: 0, 
+        order: :created_at.desc
       @title = "All Notes"
       completed = []
       uncompleted = []

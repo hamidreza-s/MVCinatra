@@ -13,5 +13,14 @@ module Model
     property :created_at, DateTime
     property :updated_at, DateTime
     belongs_to :user
-  end
+
+    class << self
+      def paginate(page, conditions)
+        note_per_page = 2
+        start_row = note_per_page * (page.to_i - 1)
+        all conditions.merge limit: note_per_page, offset: start_row
+      end
+    end
+
+  end  
 end

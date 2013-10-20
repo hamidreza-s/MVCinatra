@@ -10,11 +10,12 @@ module Controllers
     get '/signin' do
       @title = 'Sign In'
       redirect '/forbid' if session[:ui]
-      haml :signin, :layout => BLANK_LAYOUT
+      haml :signin, :layout => settings.blank_layout
     end
     
     post '/signin' do
-      user = Model::User.first username: params[:username], password: params[:password]
+      user = Model::User.first username: params[:username], 
+        password: params[:password]
       if user
         session[:ui] = user.id
         session[:un] = user.firstname
@@ -37,7 +38,7 @@ module Controllers
     
     get '/forbid' do
       @title = "Forbid"
-      haml :forbid, :layout => BLANK_LAYOUT
+      haml :forbid, :layout => setting.blank_layout
     end  
 
   end
