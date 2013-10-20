@@ -14,7 +14,7 @@ module Controllers
     end
     
     post '/signin' do
-      user = Model::User.first :username => params[:username], :password => params[:password]
+      user = Model::User.first username: params[:username], password: params[:password]
       if user
         session[:ui] = user.id
         session[:un] = user.firstname

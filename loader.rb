@@ -1,3 +1,8 @@
+# helpers
+Dir['./helpers/*.rb'].each do |file|
+  autoload :"#{File.basename(file, '.rb')}", file
+end
+
 # base controllers
 require './controllers/BaseController.rb'
 
@@ -10,4 +15,3 @@ end
 Dir['./controllers/*.rb'].each do |file|
   require file
 end
-

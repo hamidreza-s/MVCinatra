@@ -19,16 +19,19 @@ module Controllers
     enable :static
     set :public_folder, ROOT_DIR + '/public'
     
-    # filters
+    # before filter
     before do
       @default_layout = MAIN_LAYOUT
       @title = "Page"
     end
     
+    # after filter
     after do
       # not yet!
     end
 
+    # set helpers
+    helpers RouteHelper, ViewHelper
     
     # methods
     def self.set_view where

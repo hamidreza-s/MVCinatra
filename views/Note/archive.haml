@@ -27,11 +27,11 @@
                     = "Have Done at: #{note.have_done_at.strftime("%Y-%m-%d %H:%M")}"
             .col-lg-4
               .pull-right
-                %a{href: "/note/#{note.id}/archive"}  
+                %a{href: "/note/archive/#{note.id}"}  
                   %span.glyphicon.glyphicon-font
-                %a{href: "/note/#{note.id}/complete"}
+                %a{href: "/note/complete/#{note.id}"}
                   %span.glyphicon.glyphicon-flash
-                %a{href: "/note/#{note.id}/delete"}
+                %a{href: "/note/delete/#{note.id}"}
                   %span.glyphicon.glyphicon-trash
               
   .col-lg-4

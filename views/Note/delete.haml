@@ -1,19 +1,38 @@
 .row
   .col-lg-4
   .col-lg-4
-    .panel{class: (@note.complete ? "panel-danger" : "panel-info")}
-      .panel-heading
-      .panel-body.panel-info
-        = @note.content
-      .panel-footer.text-muted
-        %small
-          %em
-            Created: #{@note.created_at}
-            .pull-right
-              %a{href: "/note/#{@note.id}"}
-                %span.glyphicon.glyphicon-font
-              %a{href: "/note/#{@note.id}/complete"}  
-                %span.glyphicon.glyphicon-flash
+    - if @note
+      .panel{class: (@note.complete ? "panel-danger" : "panel-info")}
+        .panel-heading
+          .row
+            .col-lg-7
+              %small
+                %em
+                  Tags: #{@note.tags}
+            .col-lg-5
+              .pull-right
+                %small
+                  %em
+                    Frequency: #{@note.frequency}
+        .panel-body.panel-info
+          = @note.content
+        .panel-footer.text-muted
+          .row
+            .col-lg-8
+              %small
+                %em
+                  - unless @note.complete 
+                    = "Must do at: #{@note.must_do_at.strftime("%Y-%m-%d %H:%M")}"
+                  - else 
+                    = "Have Done at: #{@note.have_done_at.strftime("%Y-%m-%d %H:%M")}"
+            .col-lg-4
+              .pull-right
+                %a{href: "/note/archive/#{@note.id}"}  
+                  %span.glyphicon.glyphicon-font
+                %a{href: "/note/complete/#{@note.id}"}
+                  %span.glyphicon.glyphicon-flash
+                %a{href: "/note/edit/#{@note.id}"}
+                  %span.glyphicon.glyphicon-pencil
   .col-lg-4
 
 .row
