@@ -3,9 +3,8 @@
 - find proper front-end (javascript) architecture
 :@backend:
 - find proper webservice for handling SMS(es)
+:@done:
 - pagination for notes
 :@frontend-backend:
 - datapicker for dates
 - date convertor to persian
-:@done:
-- archive page
