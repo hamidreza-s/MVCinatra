@@ -4,7 +4,7 @@ module Controllers
     set_view to: self.name
     
     get '/' do
-      redirect '/note'
+      haml :main, :layout => settings.blank_layout
     end
 
     get '/signin' do
